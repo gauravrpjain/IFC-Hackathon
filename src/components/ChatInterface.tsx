@@ -22,7 +22,7 @@ const ChatInterface: React.FC = () => {
           headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
-            'x-api-key': 'abc_12345defg67890hij09876', // Replace with your API key
+            'x-api-key': 'zqt_y3Z8Hn6D1yI_1jD3Tgck9lVx4v4KVg_dzch3sQ', // Replace with your API key
           },
           body: JSON.stringify({
             query,
