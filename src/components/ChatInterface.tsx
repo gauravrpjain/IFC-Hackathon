@@ -10,9 +10,9 @@ const ChatInterface: FC = () => {
       </CardHeader>
       <CardContent className="flex-1 overflow-y-auto">
         <ReactSearch
-          customerId="Customer_ID"
+          customerId="3413539870"
           corpusId="IFC_Hackathon"
-          apiKey="API_KEY"
+          apiKey="zqt_y3Z8Hn6D1yI_1jD3Tgck9lVx4v4KVg_dzch3sQ"
           placeholder="Search project insights and lessons learned..."
           isDeeplinkable={true}
           openResultsInNewTab={true}
