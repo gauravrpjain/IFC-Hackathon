@@ -4,12 +4,14 @@ import ProjectInsights from './components/ProjectInsights';
 import RegionalInsights from './components/RegionalInsights';
 import RiskRecoveryAnalysis from './components/RiskRecoveryAnalysis';
 import DataExport from './components/DataExport';
-
+import ChatInterface from "./components/ChatInterface"
 function App() {
   const [activeTab, setActiveTab] = useState('LessonsExplorer');
 
   const renderTabContent = () => {
     switch (activeTab) {
+      case 'ChatInterface':
+        return <ChatInterface />;
       case 'LessonsExplorer':
         return <LessonsExplorer />;
       case 'ProjectInsights':
@@ -32,6 +34,14 @@ function App() {
         
         {/* Tabs Navigation */}
         <div className="flex space-x-4 border-b pb-2 mb-6">
+        <button
+            onClick={() => setActiveTab('ChatInterface')}
+            className={`px-4 py-2 rounded-t ${
+              activeTab === 'ChatInterface' ? 'bg-white border-t border-l border-r font-bold' : 'text-gray-600'
+            }`}
+          >
+            Chat Bot (alpha)
+          </button>
           <button
             onClick={() => setActiveTab('LessonsExplorer')}
             className={`px-4 py-2 rounded-t ${
