@@ -10,8 +10,6 @@ function App() {
 
   const renderTabContent = () => {
     switch (activeTab) {
-      case 'ChatInterface':
-        return <ChatInterface />;
       case 'LessonsExplorer':
         return <LessonsExplorer />;
       case 'ProjectInsights':
@@ -34,15 +32,7 @@ function App() {
         
         {/* Tabs Navigation */}
         <div className="flex space-x-4 border-b pb-2 mb-6">
-        <button
-            onClick={() => setActiveTab('ChatInterface')}
-            className={`px-4 py-2 rounded-t ${
-              activeTab === 'ChatInterface' ? 'bg-white border-t border-l border-r font-bold' : 'text-gray-600'
-            }`}
-          >
-            Chat Bot (alpha)
-          </button>
-          <button
+         <button
             onClick={() => setActiveTab('LessonsExplorer')}
             className={`px-4 py-2 rounded-t ${
               activeTab === 'LessonsExplorer' ? 'bg-white border-t border-l border-r font-bold' : 'text-gray-600'
