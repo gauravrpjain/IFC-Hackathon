@@ -16,7 +16,7 @@ const ChatInterface: React.FC = () => {
 
     try {
       const response = await fetch(
-        'https://api.vectara.io/v2/corpora/employee-handbook/query',
+        'https://api.vectara.io:443/v2/query',
         {
           method: 'POST',
           headers: {
