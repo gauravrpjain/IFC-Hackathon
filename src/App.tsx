@@ -1,25 +1,94 @@
-import { BrowserRouter as Router } from "react-router-dom";
-import { SearchView } from "./view/SearchView";
-import { useConfigContext } from "./contexts/ConfigurationContext";
-import { SearchContextProvider } from "./contexts/SearchContext";
-import { ConfigContextProvider } from "./contexts/ConfigurationContext";
-import "./App.scss";
+import { useState } from 'react';
+import LessonsExplorer from './components/LessonsExplorer';
+import ProjectInsights from './components/ProjectInsights';
+import RegionalInsights from './components/RegionalInsights';
+import RiskRecoveryAnalysis from './components/RiskRecoveryAnalysis';
+import DataExport from './components/DataExport';
+import ChatInterface from "./components/ChatInterface"
+function App() {
+  const [activeTab, setActiveTab] = useState('LessonsExplorer');
 
-const AppRoutes = () => {
-  const { app } = useConfigContext();
-  document.title = app.title ?? "Vectara Q&A";
+  const renderTabContent = () => {
+    switch (activeTab) {
+      case 'ChatInterface':
+        return <ChatInterface />;
+      case 'LessonsExplorer':
+        return <LessonsExplorer />;
+      case 'ProjectInsights':
+        return <ProjectInsights />;
+      case 'RegionalInsights':
+        return <RegionalInsights />;
+      case 'RiskRecoveryAnalysis':
+        return <RiskRecoveryAnalysis />;
+      case 'DataExport':
+        return <DataExport />;
+      default:
+        return null;
+    }
+  };
 
   return (
-    <Router>
-      <SearchContextProvider>
-        <SearchView />
-      </SearchContextProvider>
-    </Router>
-  );
-};
+    <div className="min-h-screen bg-gray-50 p-6">
+      <div className="max-w-7xl mx-auto">
+        <h1 className="text-3xl font-bold mb-8">ATHENA - AI-Powered Project Insights</h1>
+        
+        {/* Tabs Navigation */}
+        <div className="flex space-x-4 border-b pb-2 mb-6">
+        <button
+            onClick={() => setActiveTab('ChatInterface')}
+            className={`px-4 py-2 rounded-t ${
+              activeTab === 'ChatInterface' ? 'bg-white border-t border-l border-r font-bold' : 'text-gray-600'
+            }`}
+          >
+            Chat Bot (alpha)
+          </button>
+          <button
+            onClick={() => setActiveTab('LessonsExplorer')}
+            className={`px-4 py-2 rounded-t ${
+              activeTab === 'LessonsExplorer' ? 'bg-white border-t border-l border-r font-bold' : 'text-gray-600'
+            }`}
+          >
+            Lessons Explorer
+          </button>
+          <button
+            onClick={() => setActiveTab('ProjectInsights')}
+            className={`px-4 py-2 rounded-t ${
+              activeTab === 'ProjectInsights' ? 'bg-white border-t border-l border-r font-bold' : 'text-gray-600'
+            }`}
+          >
+            Project Insights
+          </button>
+          <button
+            onClick={() => setActiveTab('RegionalInsights')}
+            className={`px-4 py-2 rounded-t ${
+              activeTab === 'RegionalInsights' ? 'bg-white border-t border-l border-r font-bold' : 'text-gray-600'
+            }`}
+          >
+            Regional Insights
+          </button>
+          <button
+            onClick={() => setActiveTab('RiskRecoveryAnalysis')}
+            className={`px-4 py-2 rounded-t ${
+              activeTab === 'RiskRecoveryAnalysis' ? 'bg-white border-t border-l border-r font-bold' : 'text-gray-600'
+            }`}
+          >
+            Risk Recovery Analysis
+          </button>
+          <button
+            onClick={() => setActiveTab('DataExport')}
+            className={`px-4 py-2 rounded-t ${
+              activeTab === 'DataExport' ? 'bg-white border-t border-l border-r font-bold' : 'text-gray-600'
+            }`}
+          >
+            Data Export
+          </button>
+        </div>
 
-export const App = () => (
-  <ConfigContextProvider>
-    <AppRoutes />
-  </ConfigContextProvider>
-);
+        {/* Tab Content */}
+        <div className="bg-white p-6 rounded shadow">{renderTabContent()}</div>
+      </div>
+    </div>
+  );
+}
+
+export default App;
